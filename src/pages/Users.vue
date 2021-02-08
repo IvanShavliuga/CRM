@@ -2,10 +2,8 @@
   <div class="wrapper-content wrapper-content--fixed">
     <section>
       <div class="container">
-
         <!-- table -->
         <table>
-
           <!-- head -->
           <thead>
             <tr>
@@ -14,7 +12,6 @@
               <th @click="sort('gender')">Gender &#8595;</th>
             </tr>
           </thead>
-
           <!-- body -->
           <tbody>
             <tr v-for="user in usersSort" :key="user.id">
@@ -26,7 +23,6 @@
               <td> {{ user.gender }} </td>
             </tr>
           </tbody>
-
         </table>
         <p style="text-align:center;">
           <span> debug: sort: {{ currentSort }}, dir: {{ currentSortDir }} </span>
@@ -34,7 +30,6 @@
         </p>
       </div>
     </section>
-
     <!-- buttons -->
     <section>
       <div class="contaier">
@@ -46,10 +41,8 @@
     </section>
   </div>
 </template>
-
 <script>
 import axios from 'axios'
-
 export default {
   data () {
     return {
@@ -73,9 +66,9 @@ export default {
           console.log(error)
         })
   },
-  computed: {
+  /* computed: {
     usersSort () {
-      return this.users.sort((a, b) => {
+      const res = this.users.sort((a, b) => {
         let mod = 1
         if (this.currentSortDir === 'desc') mod = -1
         if (a[this.currentSort] < b[this.currentSort]) return -1 * mod
@@ -86,8 +79,9 @@ export default {
         let end = this.page.current * this.page.length
         if (index >= start && index < end) return true
       })
+      return res
     }
-  },
+  }, */
   methods: {
     sort (e) {
       if (e === this.currentSort) {
